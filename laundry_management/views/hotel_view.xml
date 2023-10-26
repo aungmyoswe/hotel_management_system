@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE xml>
+<odoo>
+	<record id="view_hotel_laundry_folio1_form_inherit" model="ir.ui.view">
+        <field name="name">hotel.folio.form</field>
+        <field name="model">hotel.folio</field>
+        <field name="inherit_id" ref="hotel.view_hotel_folio1_form" />
+        <field name="arch" type="xml">
+        	<xpath expr="//form/sheet/notebook/page[@name='foreign exchange']" position="after">
+        		<page string="Laundry Order" name="laundry_order">
+        			<separator string="Laundry Order Details" colspan="4" />
+                    <field name="laundry_id" colspan="4" nolabel="1" readonly="1">
+                    	<field name="name"/>
+	                    <field name="partner_id"/>
+	                    <field name="order_date"/>
+	                    <field name="laundry_person"/>
+	                    <field name="total_amount"/>
+                    </field>
+        		</page>
+        	</xpath>
+        </field>
+    </record>
+</odoo>

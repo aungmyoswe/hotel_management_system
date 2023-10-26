@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem name="Cashier" 
+            id="cashier_menu_s" 
+            groups="hotel.group_hotel_cashier" 
+            web_icon="cashier,static/description/icon.png" 
+            icon="fa-car"/>
+        <menuitem name="Invoicing"
+            id="menu_finance_g"
+            parent="cashier_menu_s"
+            groups="hotel.group_hotel_cashier"
+            sequence="2"/>
+        <menuitem  id="menu_open_hotel_cashier_all"
+            action="account.action_account_payments" 
+            sequence="2" 
+            groups="hotel.group_hotel_cashier"
+            parent="menu_finance_g" />
+        <menuitem action="account.action_invoice_tree1" 
+            id="menu_action_invoice_tree1" 
+            parent="menu_finance_g" 
+            groups="hotel.group_hotel_cashier"
+            sequence="1"/>
+
+        <menuitem id="menu_all_folio_fff" 
+            name="Folio"
+            parent="cashier_menu_s" 
+            sequence="1" 
+            groups="hotel.group_hotel_cashier"/>
+        <menuitem name="Generate Folio" 
+            id="menu_open_hotel_folio1_form_tree_all"
+            action="hotel.open_hotel_folio1_form_tree_all" 
+            sequence="5" 
+            parent="menu_all_folio_fff" 
+            groups="hotel.group_hotel_cashier" />  
+        <menuitem id="folio_room_line_menu_menu" parent="menu_all_folio_fff" action="hotel.action_view_folio_record" sequence="7" groups="hotel.group_hotel_cashier"/>
+    </data> 
+</odoo>

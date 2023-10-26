@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_payment_form" model="ir.ui.view">
+        <field name="name">Payment Form</field>
+        <field name="model">pay.category</field>
+        <field name="arch" type="xml">
+            <form string="Laundry">
+                <sheet>
+                      <group> 
+                        <field name="name" string="Payment Type"/>
+                        <field name="childs"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+        </record>
+        <record id="view_payment_tree" model="ir.ui.view">
+        <field name="name">Payment Form</field>
+        <field name="model">pay.category</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+        </record>
+        <record model="ir.actions.act_window" id="view_payment_tree_win_action">
+        <field name="name">Payment Form</field>
+        <field name="res_model">pay.category</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_payment_tree"/>
+        </record>
+
+        <menuitem id="hotel_payment_type_menu" name="Payment Type" parent="hotel.hotel_configuration_menu" action="view_payment_tree_win_action"/>
+
+        <record id="view_hotel_reservation_form_inherit" model="ir.ui.view">
+        <field name="name">hotel.reservation.form</field>
+        <field name="model">hotel.reservation</field>
+        <field name="inherit_id" ref="hotel_reservation.view_hotel_reservation_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='agency']" position="after">
+                <field name="type_payment"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_hotel_folio1_form_in" model="ir.ui.view">
+        <field name="name">hotel.folio.form</field>
+        <field name="model">hotel.folio</field>
+        <field name="inherit_id" ref="hotel.view_hotel_folio1_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='currency']" position="after">
+                <field name="type_payment"/>
+            </xpath>
+        </field>
+    </record>
+     <record id="quick_room_reservation_form_view_inh" model="ir.ui.view">
+        <field name="name">quick.room.reservation.form</field>
+        <field name="model">quick.room.reservation</field>
+        <field name="inherit_id" ref="hotel_reservation.quick_room_reservation_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='agency']" position="after">
+                <field name="type_payment"/>
+            </xpath>
+        </field>
+    </record>
+    </data>
+</openerp>

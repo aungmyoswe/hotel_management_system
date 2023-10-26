@@ -1,0 +1,45 @@
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="account_invoice_view_modify">
+            <field name="name">account.invoice.view.modify</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@class='oe_subtotal_footer oe_right']/field[@name='amount_tax']"
+                       position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//group[@class='oe_subtotal_footer oe_right']/field[@name='amount_untaxed']"
+                       position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+                <xpath expr="//notebook/page/field[@name='invoice_line_ids']/tree/field[@name='invoice_line_tax_ids']"
+                       position="attributes">
+                    <attribute name="invisible">True</attribute>
+                </xpath>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="account_invoice_supplier">
+            <field name="name">account.invoice.supplier</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@class='oe_subtotal_footer oe_right']/field[@name='amount_untaxed']"
+                       position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//group[@class='oe_subtotal_footer oe_right']/field[@name='amount_tax']"
+                       position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//notebook/page/field[@name='invoice_line_ids']/tree/field[@name='invoice_line_tax_ids']"
+                       position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//notebook/page/group/group/div/field[@name='tax_line_ids']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

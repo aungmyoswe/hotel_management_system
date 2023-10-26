@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="view_hotel_laundry_type_form" model="ir.ui.view">
+		        <field name="name">hotel.laundry_type.form</field>
+		        <field name="model">hotel.laundry</field>
+		        <field name="arch" type="xml">
+		            <form string="Laundry">
+		                <sheet>  
+		                	<label for="product_id" string="Name"/>
+                			<h1>
+                				<field name="product_id" required="1"/>
+                			</h1> 
+                			<notebook>
+                        		<page string="Information">
+				         		<group>
+                                <group colspan="4" col="4">
+                                    <field name="type" select="2" string="Laundry Type"/>
+                                    <field name="categ_id" string="Laundry Category"/>
+                                    <field name="uom_id"/>
+                                    <field name="default_code" />
+                                    <field name="uom_po_id"/>
+                                </group>
+                            </group>
+				         		 <newline />
+		                            <separator colspan='4' string="Supplier Taxes" />
+		                            <field name="supplier_taxes_id" colspan="4" nolabel='1'
+		                                help='Define supplier taxes if there any on the ty. ' />
+		                            <newline />
+		                            <separator colspan='4' string="Customer Taxes" />
+		                            <field name="taxes_id" colspan="4" nolabel='1'
+	                               		help='List of customer taxes applied on the ty. ' />
+	                          </page>
+	                          <page string="Procurement">
+	                            <group colspan="4" col="4">
+	                                <field name="active" select="2"/>
+	                                <field name="list_price"/>
+	                                <field name="cost_method" string="Cost Method"/>
+	                                <field name="sale_ok" select="2"/>
+	                                <field name="standard_price" invisible="1"/>
+	                                <field name="rental" select="2"/>
+	                            </group>
+                           		<field name="charges_line">
+			                    <tree editable="buttom">
+			                        <field name="currency"/>
+			                        <field name="price"/>
+			                    </tree>
+			                </field>
+                            <newline/>
+                            <group>
+                                <separator string="Suplliers"/>
+                                <field name="seller_ids" colspan="4" nolabel="1" widget="one2many_list"/>
+                            </group>
+                        </page>
+                        <page string="Descriptions">
+                            <separator string="Description"/>
+                            <field name="description" colspan="4" nolabel="1"/>
+                            <separator string="Sale Description"/>
+                            <field name="description_sale" colspan="4" nolabel="1"/>
+                            <separator string="Purchase Description"/>
+                            <field name="description_purchase" colspan="4" nolabel="1"/>
+                        </page>
+                    </notebook>
+		                </sheet>
+
+		            </form>
+		        </field>
+		</record>
+		<record id="hotel_laundry_tree_view" model="ir.ui.view">
+        <field name="name">hotel.laundry.tree</field>
+        <field name="model">hotel.laundry</field>
+        <field name="arch" type="xml">
+            <tree string="Hotel Laundry">
+                <field name="name" />
+                <field name="categ_id" string="Laundry Category" />
+                <field name="list_price" string="Laundry rate" />
+            </tree>		                
+        </field>
+		</record>
+		<record id="view_hotel_laundry_search" model="ir.ui.view">
+        <field name="name">hotel.laundry.search</field>
+        <field name="model">hotel.laundry</field>
+        <field name="arch" type="xml">
+            <search string="Hotel Laundry">
+                <field name="name" />
+                <field name="categ_id" string="laundry Category" />
+                <field name="list_price" string="Laundry rate" />
+                <newline />
+                <group expand="0" string="Group By...">
+                    <filter name="categ_id" string="Catagory" icon="terp-stock_symbol-selection"
+                        domain="[]" context="{'group_by':'categ_id'}" />
+                </group>
+            </search>
+        </field>
+    	</record>
+
+		<record id="view_hotel_laundry_form" model="ir.ui.view">
+		        <field name="name">hotel.laundry.form</field>
+		        <field name="model">hotel.laundry.function</field>
+		        <field name="arch" type="xml">
+		            <form string="Laundry Type">
+		                <sheet>
+				            <group>
+		                        <field name="name" string="Laundry Type" />
+		                        <field name="laundry_id"/>
+		                        <field name="child_id" invisible="1" />
+		                    </group>
+				        </sheet>
+		            </form>
+		        </field>
+		</record>
+		<record id="hotel_laundry_type_tree_view" model="ir.ui.view">
+		        <field name="name">hotel.laundry.tree</field>
+		        <field name="model">hotel.laundry.function</field>
+		        <field name="arch" type="xml">
+		            <tree string="Laundry">		                
+		                <field name="name" />		                    	
+		            </tree>
+		        </field>
+		</record>
+		<record id="hotel_laundry_category_tree_view" model="ir.ui.view">
+	    <field name="name">hotel.laundry.function.tree</field>
+	    <field name="model">hotel.laundry.function</field>
+	    <field name="field_parent">child_id</field>
+	    <field name="arch" type="xml">
+	        <tree toolbar="True" string="Laundry Categories">
+	            <field name="name" />
+	        </tree>
+	    </field>
+	</record>
+	<!-- <record id="view_hotel_laundry_type_form_inherit" model="ir.ui.view">
+        <field name="name">hotel.laundry_type.form</field>
+        <field name="model">hotel.laundry</field>
+        <field name="inherit_id" ref="hotel_laundry.view_hotel_laundry_type_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/notebook/page[2]/group[1]" position='after'>
+                
+            </xpath>
+        </field>
+    </record> -->
+    	<record model="ir.actions.act_window" id="view_hotel_laundry_tree">
+            <field name="name">Laundry</field>
+            <field name="res_model">hotel.laundry</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="hotel_laundry_tree_view" />
+            <field name="view_mode">tree,form</field>
+        </record>
+         <record id="action_hotel_laundry_form" model="ir.actions.act_window">
+	        <field name="name">Laundry Type</field>
+	        <field name="res_model">hotel.laundry.function</field>
+	        <field name="view_type">form</field>		       
+	        <field name="view_id" ref="hotel_laundry_type_tree_view" />
+	        <field name="view_mode">form</field>
+		 </record>
+		 <record id="hotel_laundry_categ_action" model="ir.actions.act_window">
+        <field name="name">Laundry by Category</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hotel.laundry.function</field>
+        <field name="domain">[('laundry_id', '=', False)]</field>
+        <field name="view_type">tree</field>
+        <field name="view_id" ref="hotel_laundry_category_tree_view" />
+    </record>
+           <menuitem  id="menu_hotel_laundry" name="Laundry" parent="laundry_management.laundry_config_menu" sequence="22"/>
+        <menuitem id="menu_open_hotel_laundry_form" name="Laundry"
+        	action="view_hotel_laundry_tree" sequence="23" parent="menu_hotel_laundry" />
+	    <menuitem name="Laundry Type" id="menu_view_hotel_laundry_tree" action="action_hotel_laundry_form" sequence="24" parent="menu_hotel_laundry"/>    
+	    <menuitem name="Laundry by Category" id="menu_hotel_laundry_categ_action"
+        action="hotel_laundry_categ_action" sequence="25"
+        parent="menu_hotel_laundry" />	
+     </data>
+</odoo>

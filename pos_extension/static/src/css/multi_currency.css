@@ -1,0 +1,10 @@
+.multi-currency select{
+	width:100px;
+	height:30px;
+	margin:10px;
+}
+.multi-currency label {
+	color:#FFF;
+	margin:5px;
+	font-weight:bold;
+}

@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ar_odoo_hide_tax_ar_odoo_hide_tax,ar_odoo_hide_tax.ar_odoo_hide_tax,model_ar_odoo_hide_tax_ar_odoo_hide_tax,,1,0,0,0

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+         <menuitem id="hotel_audit_report_menu" name="Audit Report" web_icon="hotel_audit_report,static/description/icon.png" icon="fa-car" sequence="25"/>
+          <menuitem id="menu_all_folio_a" name="Folio"
+        	parent="hotel_audit_report_menu" sequence="4" groups="hotel.group_hotel_user,hotel.group_hotel_manager"/>
+	    <menuitem name="Generate Folio" id="menu_open_hotel_folio1_form_tree_all"
+	        action="hotel.open_hotel_folio1_form_tree_all"  groups="hotel.group_hotel_user,hotel.group_hotel_manager" sequence="5" parent="menu_all_folio_a" />
+     </data>
+</odoo>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="HotelPosBtn">
+        <div class='control-button hotel-pos-folio'>
+            <i class='fa fa-hotel' /> Folio
+        </div>
+    </t>
+
+    <t t-name="SetFolioForPOS">
+        <div class="modal-dialog">
+            <div class="popup" style="background:white;text-align:left;">
+                <center>
+                    <h3><t t-esc=" widget.title || '' " /></h3>
+                </center>
+                <div t-attf-class="form-group col-lg-6">
+                    <table class="room-list" style="width:100%;padding:10px;font-size:15px;">
+                            <thead>
+                                <tr style="background: #7C7FA7; height: 30px; color: #FFFFFF; font-weight: bold;">
+                                    <th style="padding-left: 5px;">No</th>
+                                    <th style="width: 20%;">Folio</th>
+                                    <th style="width: 20%;">Room</th>
+                                    <th style="width: 30%;">Customer</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody class='room-list-contents'>
+                                <t t-foreach="widget.hotel_folio_line" t-as="room">
+                                    <t t-if="room.state == 'sale' or room.state =='draft'">
+                                        <tr style="height: 30px;">
+                                            <td style="width: 10%; padding-left: 5px;">
+                                                <span t-esc="room_index+1" />
+                                            </td>
+                                            <td>
+                                                <t t-esc="room.folio_id[1]" />
+                                                <span style="display: none;" class="folio_id">
+                                                    <t t-esc="room.folio_id[0]" />
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <t t-esc="room.product_id[1]" />
+                                            </td>
+                                            <td>
+                                                <t t-esc="room.order_partner_id[1]" />
+                                                <span style="display: none;" class="partner_id">
+                                                    <t t-esc="room.order_partner_id[0]" />
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <t t-if="room.state == 'sale'">
+                                                    Check Out
+                                                </t>
+                                                <t t-if="room.state == 'draft'">
+                                                    Check In
+                                                </t>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </t>
+                            </tbody>
+                    </table>
+                    <div class="footer">
+                        <div class="button confirm">
+                            <span>Finish</span>
+                        </div>
+                        <div class="button cancel" >
+                            <span>Close</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <!-- Menu item to open Import Product list -->
+       <!--  <menuitem id="menu_service_data_import"
+                  name="Service Import"
+                  sequence="2"/> -->
+       <!--  <menuitem name="Front Desk" 
+            id="frank_desk_menu" 
+            groups="hotel.group_hotel_front_desk"
+            web_icon="front_desk,static/description/icon.png" 
+            icon="fa-car"/>
+ -->
+      <!--   <menuitem id="menu_ser_product_import" name="Service" parent="menu_service_data_import" sequence="-1" /> -->
+		<!-- <menuitem id="menu_supplier_import" name="Supplier" parent="menu_service_data_import" sequence="0" />
+		<menuitem id="menu_customer_import" name="Customer" parent="menu_service_data_import" sequence="2" /> -->
+
+         <record id="view_form_product_import" model="ir.ui.view">
+            <field name="name">Import Product Form</field>
+            <field name="model">service.product</field>
+            <field name="arch" type="xml">
+                <form string="Product" version="7.0">
+					<header>
+						<button name="import_data" string="Import Product" type="object"
+							class="oe_highlight" />
+						<field name="state" widget="statusbar" statusbar_visible="draft,completed,error" />
+					</header>
+					<sheet>
+						<group>
+							<field name="name" />
+							<field name="import_date" />
+							<field name="import_file" filename="import_fname" />
+							<field name="import_fname" invisible="1" class="oe_inline oe_right" />
+							<field name="product_type" />
+							<field name="company_id" />
+							<field name="note" />
+						</group>
+					</sheet>
+				</form>
+            </field>
+         </record>
+
+		<record id="view_product_import_tree" model="ir.ui.view">
+			<field name="name">Import Product Tree</field>
+			<field name="model">service.product</field>
+			<field name="arch" type="xml">
+				<tree string="Product Import">
+					<field name="import_date" />
+					<field name="name" />
+					<field name="import_fname" />
+					<field name="note" />
+					<field name="product_type" />
+					<field name="company_id" />
+					<field name="state" />
+				</tree>
+			</field>
+		</record>
+
+		<!-- Action -->
+		<record id="action_ser_product_import" model="ir.actions.act_window">
+			<field name="name">Product Import</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">service.product</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_id" ref="view_product_import_tree" />
+		</record>
+		
+		<!-- First level menu -->
+		<menuitem id="main_menu_service_product_import" name="Import Service"
+			action="action_ser_product_import" parent="master_import.menu_product_import" />
+		<!-- <menuitem id="main_menu_supplier_import" name="Import Supplier"
+				  action="action_supplier_import" parent="menu_supplier_import" />
+				  
+		<menuitem id="main_menu_customer_import" name="Import Customer"
+				  action="action_customer_import" parent="menu_customer_import" /> -->
+
+    </data>
+</odoo>

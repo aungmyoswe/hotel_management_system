@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="assets_backend" name="assets_backend_inherit" inherit_id="point_of_sale.assets">
+            <xpath expr="//script[@src='/point_of_sale/static/src/js/widget_base.js']" position="replace">
+                <script type="text/javascript" src="/pos_extension/static/src/js/widget_base.js"></script>
+            </xpath>
+             <xpath expr="//script[@src='/point_of_sale/static/src/js/models.js']" position="replace">
+                <script type="text/javascript" src="/pos_extension/static/src/js/models.js"></script>
+            </xpath>
+            <xpath expr="//script[@src='/point_of_sale/static/src/js/db.js']" position="replace">
+                <script type="text/javascript" src="/pos_extension/static/src/js/db.js"></script>
+            </xpath>
+        </template>
+        <template id="assets" inherit_id="point_of_sale.assets" name="multi_currency">
+            <xpath expr="//link[@id='pos-stylesheet']" position="after">
+                <link rel="stylesheet" href="pos_extension/static/src/css/multi_currency.css"/>
+                <!-- <script type="text/javascript" src="/pos_extension/static/src/js/multi_currency.js"></script> -->
+            </xpath>
+        </template>
+    </data>
+</openerp>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE xml>
+<odoo>
+    <menuitem id="housekeeping_menu" 
+        name="Housekeeping"
+        groups="hotel.group_hotel_housekeeping" 
+        web_icon="Housekeeping_extension,static/description/h_icon.png" 
+        icon="fa-car" />
+    <menuitem id="menu_housekeeping_act" name="Housekeeping Services"
+        parent="housekeeping_menu" sequence="2" 
+        groups="hotel.group_hotel_housekeeping" />
+    <menuitem name="Housekeeping Services" 
+        id="menu_open_hotel_housekeeping_form"
+        action="hotel_housekeeping.open_hotel_housekeeping_form_tree" 
+        parent="menu_housekeeping_act"
+        sequence="4" 
+        groups="hotel.group_hotel_housekeeping" />
+     <menuitem id="menu__hotel_housekeeping_summary" 
+        groups="hotel.group_hotel_housekeeping" 
+        name="Housekeeping Summary"
+        action="hotel_reservation.action_hotel_housekeeping_summary" parent="menu_housekeeping_act"
+        sequence="5" />
+</odoo>

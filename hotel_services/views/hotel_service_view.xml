@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE xml>
+<odoo>
+      <record id="view_hotel_folio_service_line_ext" model="ir.ui.view">
+        <field name="name">hotel.folio.form</field>
+        <field name="model">hotel.folio</field>
+        <field name="inherit_id" ref="hotel.view_hotel_folio1_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='service_lines']/tree[1]" position="attributes">
+                <attribute name="editable">buttom</attribute>
+            </xpath>
+              <xpath expr="//field[@name='room_lines']/tree[1]" position="attributes">
+                <attribute name="editable">buttom</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

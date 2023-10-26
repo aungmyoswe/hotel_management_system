@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+            <record id="view_partner_form_fin" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+            <xpath expr="//notebook/page[@name='sales_purchases']" position="after">
+                <page name="price_list " string="Price List">
+                    <group name="Type Lists For Agency" >
+                        <field name="partner_line" nolabel='1'>
+                            <tree editable="buttom">
+                                <field name="room_type"/>
+                                <field name="currency"/>
+                                <field name="price"/>
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+             </xpath>
+             <xpath expr="//notebook/page[@name='sales_purchases']/group/group[@name='purchase']" position="after">
+                <group string="Agency" name="agency">
+                    <field name="agency"/>
+                </group>
+             </xpath>
+               <xpath expr="//sheet/group/group/field[@name='function']" position="after">
+                    <field name="partner_nrc"/>
+             </xpath>
+            </field>
+        </record>
+
+       <record id="view_res_partner_filter_fin" model="ir.ui.view">
+            <field name="name">res.partner.select</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="partner_nrc" String="NRC" domain="[('partner_nrc','like',self)]"/>
+                </xpath>
+                <xpath expr="//filter[@name='supplier']" position="after">
+                    <field name="partner_nrc" String="NRC" domain="[('partner_nrc','like',self)]"/>
+                    <filter string="Agency" name="agency" domain="[('agency','=',1), ('parent_id', '=', False)]"/>
+                </xpath>
+            </field>
+        </record>
+        <menuitem name="Front Desk" 
+            id="frank_desk_menu" 
+            groups="hotel.group_hotel_front_desk"
+            web_icon="front_desk,static/description/icon.png" 
+            icon="fa-car"/>
+       <!--  <menuitem id="frank_desk_menu_sub" name="Front  Desk" parent="frank_desk_menu"  sequence="1" /> -->
+	    <menuitem name="Customers" 
+            id="menu_open_hotel_front_desk_all" 
+	        action="base.action_partner_customer_form" 
+            sequence="1" 
+            parent="frank_desk_menu" 
+            groups="hotel.group_hotel_front_desk"/>
+
+        <menuitem name="Agency" 
+            id="menu_open_hotel_front_desk_all_agency" 
+            action="partner_extension.action_partner_agency_form" 
+            sequence="1" 
+            parent="frank_desk_menu" 
+            groups="hotel.group_hotel_front_desk"/>
+        
+        <menuitem id="menu_hotel_reservation1" 
+            name="Reservations" 
+            groups="hotel.group_hotel_front_desk"
+            parent="frank_desk_menu" 
+            sequence="1" />
+
+       <menuitem name="Reservations" 
+            id="menu_action_hotel_reservation_tree_all1"
+            action="hotel_reservation.action_hotel_reservation_tree_all" 
+            groups="hotel.group_hotel_front_desk" 
+            parent="menu_hotel_reservation1"
+            sequence="1" />
+
+         <menuitem name="Quick Reservations" 
+            id="menu_action_hotel_reservation_tree_all2"
+            action="hotel_reservation.action_hotel_reservation_summary" 
+            groups="hotel.group_hotel_front_desk" 
+            parent="menu_hotel_reservation1"
+            sequence="2" />
+         <menuitem id="menu_all_folio_desk" 
+            name="Folio"
+            parent="frank_desk_menu" 
+            sequence="1" 
+            groups="hotel.group_hotel_front_desk"/>
+        <menuitem name="Generate Folio" 
+            id="menu_open_hotel_folio1_form_tree_all_desk"
+            action="hotel.open_hotel_folio1_form_tree_all" 
+            sequence="5" 
+            parent="menu_all_folio_desk" 
+            groups="hotel.group_hotel_front_desk" /> 
+        </data> 
+</odoo>

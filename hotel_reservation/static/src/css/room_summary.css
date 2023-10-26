@@ -1,0 +1,58 @@
+
+.table_header
+{
+    text-align: center;
+    min-width:100px;
+    vertical-align: middle;
+}
+
+/* change for table occupied color thantshweaung 20181029 start */
+.table_occupied
+{
+    background-color: #F96261;
+    color: white;
+    text-align: center;
+    min-width:100px;
+    vertical-align: middle;
+    cursor:pointer;
+}
+
+.table_reserved
+{
+    background-color: orange;
+    color: white;
+    text-align: center;
+    min-width:100px;
+    vertical-align: middle;
+    cursor:pointer;
+}
+
+.table_checked
+{
+    background-color: #E86710;
+    color: white;
+    text-align: center;
+    min-width:100px;
+    vertical-align: middle;
+    cursor:pointer;
+}
+
+/* change for table occupied color thantshweaung 20181029 end */
+.table_reserved1
+{
+    background-color: blue;
+    color: white;
+    text-align: center;
+    min-width:100px;
+    vertical-align: middle;
+    cursor:pointer;
+}
+.table_free
+{
+    background-color: #2FB5AC;
+    color: white;
+    text-align: center;
+    min-width:100px;
+    vertical-align: middle;
+    cursor:pointer;
+}

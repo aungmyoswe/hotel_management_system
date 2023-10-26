@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record id="view_exchange_form" model="ir.ui.view">
+            <field name="name">res.currency.exchange.form</field>
+            <field name="model">res.currency.exchange</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"  class="oe_read_only" />
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="start_date" />
+                                <field name="end_date" />
+                            </group>
+                            <group>
+                                <field name="active" />
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="from_currency" />
+                                <field name="from_amount" />
+                            </group>
+                            <group>
+                                <field name="to_currency" />
+                                <field name="to_amount" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_exchange_tree" model="ir.ui.view">
+            <field name="name">res.currency.exchange.tree</field>
+            <field name="model">res.currency.exchange</field>
+            <field name="arch" type="xml">
+                <tree string="Exchange Currency">
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_exchange_view" model="ir.actions.act_window">
+            <field name="name">Exchange Currency</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.currency.exchange</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_exchange_tree" />
+        </record>
+        <menuitem name="Currency Exchange" id="menu_currency_exchange"
+        action="action_exchange_view" sequence="22"
+        parent="hotel.hotel_configuration_menu" />
+	</data>
+</odoo>
